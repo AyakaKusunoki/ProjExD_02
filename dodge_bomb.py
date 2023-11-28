@@ -47,9 +47,9 @@ def main():
     (-5, 0):kk_img, 
     (-5, -5):pg.transform.rotozoom(kk_img, -45, 1.0)
     }
-    #kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
+
     kk_rct = kk_img.get_rect()  # 練習３：こうかとんSurfaceのRectを抽出する
-    # print(kk_rct)
+   
     kk_rct.center = 900, 400  # 練習３：こうかとんの初期座標
     bb_img = pg.Surface((20, 20))   # 練習１：透明のSurfaceを作る
     bb_img.set_colorkey((0, 0, 0))  # 練習１：黒い部分を透明にする
@@ -64,10 +64,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return
-        # print(kk_rct, bb_rct)
-
+        
         if kk_rct.colliderect(bb_rct):
-            #screen.blit(cy_img, kk_rct)
             resize_image = pg.transform.scale(cy_img, (new_width, new_height))
             resize_rect = resize_image.get_rect()
             screen.blit(resize_image, kk_rct)
